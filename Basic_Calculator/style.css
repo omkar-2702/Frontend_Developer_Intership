@@ -55,7 +55,7 @@ body {
 }
 
 .btn.operator {
-  background: #4b5563;
+  background: #374151;
 }
 
 .btn.equals {
@@ -78,4 +78,70 @@ body {
 
 .span-2 {
   grid-column: span 2;
+}
+
+.memory-btn {
+  background: #065f46;
+}
+
+.memory-btn:hover {
+  background: #047857;
+}
+
+/* History button styling */
+#history, #clear-history {
+  background: #7c3aed;
+}
+
+#history:hover, #clear-history:hover {
+  background: #6d28d9;
+}
+
+#clear-history {
+  background: #dc2626;
+}
+
+#clear-history:hover {
+  background: #b91c1c;
+}
+
+/* History modal */
+.history-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+}
+
+.history-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1f2933;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.history-list {
+  list-style: none;
+  margin: 10px 0;
+}
+
+.history-item {
+  padding: 10px;
+  border-bottom: 1px solid #374151;
+  font-family: monospace;
+  background: #111827;
+  margin: 5px 0;
+  border-radius: 6px;
+  word-break: break-all;
 }
