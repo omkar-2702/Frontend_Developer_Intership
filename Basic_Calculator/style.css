@@ -90,11 +90,11 @@ body {
 
 /* History button styling */
 #history, #clear-history {
-  background: #7c3aed;
+  background: #3c88ab;
 }
 
 #history:hover, #clear-history:hover {
-  background: #6d28d9;
+  background: #a03b3b;
 }
 
 #clear-history {
