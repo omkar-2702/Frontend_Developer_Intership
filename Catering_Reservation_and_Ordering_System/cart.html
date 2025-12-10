@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cart - Catering</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <h1>Your Cart</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html" class="active">Cart</a>
+    <a href="orders.html">My Orders</a>
+    <a href="profile.html">My Profile</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+</header>
+
+<main>
+  <section id="cartItems" class="list"></section>
+
+  <section class="card">
+    <h2>Place Order</h2>
+    <form id="placeOrderForm">
+      <label>Event Date
+        <input type="date" id="eventDate" required />
+      </label>
+      <label>Event Address
+        <textarea id="eventAddress" required></textarea>
+      </label>
+      <button type="submit">Confirm Order</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>Review your items before placing the order.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

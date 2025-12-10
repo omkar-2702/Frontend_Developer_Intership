@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #fafafa;
+  color: #333;
+}
+
+header {
+  background: #9c27b0;
+  color: #fff;
+  padding: 16px 24px;
+}
+
+header h1 {
+  margin-bottom: 8px;
+}
+
+nav a {
+  color: #fff;
+  margin-right: 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a.active {
+  text-decoration: underline;
+}
+
+main {
+  padding: 24px;
+}
+
+footer {
+  background: #f0f0f0;
+  text-align: center;
+  padding: 12px;
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+.auth-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex: 1;
+  min-width: 280px;
+}
+
+.card h2 {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+input, textarea, button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+button {
+  background: #9c27b0;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+button:hover {
+  background: #7b1fa2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.product-card h3 {
+  margin-bottom: 6px;
+}
+
+.product-card p {
+  margin-bottom: 4px;
+}
+
+.product-card button {
+  width: auto;
+  margin-top: 8px;
+}
+
+.list .item {
+  background: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+}
+
+.note {
+  font-size: 12px;
+  color: #555;
+  margin-top: 8px;
+}
+
+.admin-layout {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
