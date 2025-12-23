@@ -18,13 +18,24 @@ document.addEventListener("DOMContentLoaded", () => {
   renderTasks();
 });
 
-// Form submit: add task
+// Form submit: add task (UPDATED with duplicate prevention)
 taskForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const text = taskInput.value.trim();
-
+  
   if (!text) {
     showMessage("Task cannot be empty.", "error");
+    return;
+  }
+
+  // NEW: Check for duplicate tasks (case-insensitive)
+  const duplicateTask = tasks.find(task => 
+    task.text.toLowerCase() === text.toLowerCase()
+  );
+  
+  if (duplicateTask) {
+    showMessage(`Task "${text}" already exists!`, "error");
+    taskInput.value = "";
     return;
   }
 
@@ -82,8 +93,8 @@ function loadTasksFromStorage() {
 // Render tasks
 function renderTasks() {
   taskList.innerHTML = "";
-
   let filteredTasks = tasks;
+
   if (currentFilter === "active") {
     filteredTasks = tasks.filter((t) => !t.completed);
   } else if (currentFilter === "completed") {
@@ -147,7 +158,6 @@ function renderTasks() {
 
     li.appendChild(mainDiv);
     li.appendChild(actionsDiv);
-
     taskList.appendChild(li);
   });
 }
@@ -172,6 +182,16 @@ function editTask(id) {
   const trimmed = newText.trim();
   if (!trimmed) {
     showMessage("Task cannot be empty.", "error");
+    return;
+  }
+
+  // ALSO check for duplicates during edit (excluding current task)
+  const duplicateTask = tasks.find(t => 
+    t.id !== id && t.text.toLowerCase() === trimmed.toLowerCase()
+  );
+  
+  if (duplicateTask) {
+    showMessage(`Task "${trimmed}" already exists!`, "error");
     return;
   }
 
