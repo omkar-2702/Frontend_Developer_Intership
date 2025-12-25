@@ -1,213 +1,225 @@
-// Keys
-const STORAGE_KEY = "todo_list_tasks";
+console.log("Daily Planner loaded successfully!");
 
-// DOM elements
-const taskForm = document.getElementById("task-form");
-const taskInput = document.getElementById("task-input");
-const message = document.getElementById("message");
-const taskList = document.getElementById("task-list");
-const filterButtons = document.querySelectorAll(".filter-btn");
+const APP_KEY = "daily_planner_omkar";
+const form = document.getElementById("planner-form");
+const textInput = document.getElementById("item-text");
+const statusBar = document.getElementById("status-bar");
+const itemsList = document.getElementById("items-area");
+const viewButtons = document.querySelectorAll(".view-btn");
+const clearDoneBtn = document.getElementById("clear-done");
 
-// State
-let tasks = [];
-let currentFilter = "all";
+let plannerItems = [];
+let activeView = "everything";
 
-// Load tasks on start
 document.addEventListener("DOMContentLoaded", () => {
-  loadTasksFromStorage();
-  renderTasks();
+    loadPlannerData();
+    updateStatusDisplay();
+    refreshDisplay();
 });
 
-// Form submit: add task (UPDATED with duplicate prevention)
-taskForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const text = taskInput.value.trim();
-  
-  if (!text) {
-    showMessage("Task cannot be empty.", "error");
-    return;
-  }
+// Add new item
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const content = textInput.value.trim();
+    
+    if (!content) {
+        showNotification("Please enter some task description!", "warning");
+        return;
+    }
 
-  // NEW: Check for duplicate tasks (case-insensitive)
-  const duplicateTask = tasks.find(task => 
-    task.text.toLowerCase() === text.toLowerCase()
-  );
-  
-  if (duplicateTask) {
-    showMessage(`Task "${text}" already exists!`, "error");
-    taskInput.value = "";
-    return;
-  }
+    const existsAlready = plannerItems.some(item => 
+        item.content.toLowerCase() === content.toLowerCase()
+    );
 
-  const newTask = {
-    id: Date.now().toString(),
-    text,
-    completed: false,
-    priority: "medium" // default priority; can be extended later
-  };
+    if (existsAlready) {
+        showNotification("This task is already in your planner!", "warning");
+        return;
+    }
 
-  tasks.push(newTask);
-  saveTasksToStorage();
-  renderTasks();
-  taskInput.value = "";
-  showMessage("Task added successfully.", "success");
+    const newItem = {
+        id: Date.now().toString(),
+        content,
+        done: false,
+        level: document.getElementById("item-level").value,
+        type: document.getElementById("item-type").value,
+        targetDate: document.getElementById("target-date").value
+    };
+
+    plannerItems.push(newItem);
+    savePlannerData();
+    refreshDisplay();
+    resetForm();
+    showNotification("New task added to your planner!", "success");
 });
 
-// Filter buttons
-filterButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    filterButtons.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    currentFilter = btn.dataset.filter;
-    renderTasks();
-  });
+// View switching
+viewButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        viewButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeView = btn.dataset.view;
+        refreshDisplay();
+    });
 });
 
-// Show message
-function showMessage(text, type) {
-  message.textContent = text;
-  message.className = "message " + (type || "");
-  if (text) {
+// Clear completed
+clearDoneBtn.addEventListener("click", () => {
+    if (plannerItems.some(item => item.done)) {
+        plannerItems = plannerItems.filter(item => !item.done);
+        savePlannerData();
+        refreshDisplay();
+        showNotification("Completed tasks cleared!", "info");
+    }
+});
+
+function showNotification(msg, type) {
+    statusBar.textContent = msg;
+    statusBar.className = `status-bar ${type}`;
     setTimeout(() => {
-      message.textContent = "";
-      message.className = "message";
-    }, 2000);
-  }
+        statusBar.textContent = "";
+        statusBar.className = "status-bar";
+    }, 3000);
 }
 
-// Local storage helpers
-function saveTasksToStorage() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+function resetForm() {
+    textInput.value = "";
+    document.getElementById("item-level").value = "normal";
+    document.getElementById("item-type").value = "office";
+    document.getElementById("target-date").value = "";
 }
 
-function loadTasksFromStorage() {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    tasks = stored ? JSON.parse(stored) : [];
-  } catch (error) {
-    tasks = [];
-    console.error("Failed to load tasks from storage", error);
-  }
+function savePlannerData() {
+    localStorage.setItem(APP_KEY, JSON.stringify(plannerItems));
 }
 
-// Render tasks
-function renderTasks() {
-  taskList.innerHTML = "";
-  let filteredTasks = tasks;
+function loadPlannerData() {
+    try {
+        const saved = localStorage.getItem(APP_KEY);
+        plannerItems = saved ? JSON.parse(saved) : [];
+    } catch (e) {
+        plannerItems = [];
+        console.error("Could not load planner data:", e);
+    }
+}
 
-  if (currentFilter === "active") {
-    filteredTasks = tasks.filter((t) => !t.completed);
-  } else if (currentFilter === "completed") {
-    filteredTasks = tasks.filter((t) => t.completed);
-  }
+function updateStatusDisplay() {
+    const total = plannerItems.length;
+    const doneCount = plannerItems.filter(item => item.done).length;
+    const pending = total - doneCount;
+    statusBar.textContent = `Total: ${total} | Pending: ${pending} | Done: ${doneCount}`;
+}
 
-  if (filteredTasks.length === 0) {
-    const emptyLi = document.createElement("li");
-    emptyLi.textContent = "No tasks to show.";
-    emptyLi.style.textAlign = "center";
-    emptyLi.style.color = "#6b7280";
-    emptyLi.style.fontSize = "0.9rem";
-    taskList.appendChild(emptyLi);
-    return;
-  }
+function refreshDisplay() {
+    itemsList.innerHTML = "";
+    let visibleItems = plannerItems;
 
-  filteredTasks.forEach((task) => {
+    if (activeView === "pending") {
+        visibleItems = plannerItems.filter(item => !item.done);
+    } else if (activeView === "done") {
+        visibleItems = plannerItems.filter(item => item.done);
+    }
+
+    if (visibleItems.length === 0) {
+        const emptyMsg = document.createElement("li");
+        emptyMsg.className = "item-card empty-state";
+        emptyMsg.innerHTML = "<p style='text-align:center;color:#a0aec0;'>No tasks here yet. Add one above! 🎯</p>";
+        itemsList.appendChild(emptyMsg);
+        updateStatusDisplay();
+        return;
+    }
+
+    visibleItems.forEach(item => {
+        const card = createItemCard(item);
+        itemsList.appendChild(card);
+    });
+
+    updateStatusDisplay();
+}
+
+function createItemCard(item) {
     const li = document.createElement("li");
-    li.className = "task-item";
-    li.dataset.id = task.id;
-
-    const mainDiv = document.createElement("div");
-    mainDiv.className = "task-main";
+    li.className = `item-card ${item.done ? 'done' : ''}`;
+    li.dataset.id = item.id;
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.className = "task-checkbox";
-    checkbox.checked = task.completed;
-    checkbox.addEventListener("change", () => toggleTaskCompleted(task.id));
+    checkbox.className = "item-check";
+    checkbox.checked = item.done;
+    checkbox.addEventListener("change", () => toggleItem(item.id));
 
-    const textSpan = document.createElement("span");
-    textSpan.className = "task-text";
-    textSpan.textContent = task.text;
-    if (task.completed) {
-      textSpan.classList.add("completed");
-    }
+    const title = document.createElement("span");
+    title.className = `item-title ${item.done ? 'done' : ''}`;
+    title.textContent = item.content;
 
-    const prioritySpan = document.createElement("span");
-    prioritySpan.className = `task-priority priority-${task.priority}`;
-    prioritySpan.textContent = task.priority;
+    const info = document.createElement("div");
+    info.className = "item-info";
 
-    mainDiv.appendChild(checkbox);
-    mainDiv.appendChild(textSpan);
-    mainDiv.appendChild(prioritySpan);
+    const levelTag = document.createElement("span");
+    levelTag.className = `tag level-${item.level}`;
+    levelTag.textContent = item.level.toUpperCase();
 
-    const actionsDiv = document.createElement("div");
-    actionsDiv.className = "task-actions";
+    const typeTag = document.createElement("span");
+    typeTag.className = "tag tag-type";
+    typeTag.textContent = item.type;
+
+    const dateTag = document.createElement("span");
+    dateTag.className = "tag tag-date";
+    dateTag.textContent = item.targetDate 
+        ? new Date(item.targetDate).toLocaleDateString('en-IN')
+        : "No deadline";
+
+    info.append(levelTag, typeTag, dateTag);
+
+    const actions = document.createElement("div");
+    actions.className = "item-actions";
 
     const editBtn = document.createElement("button");
-    editBtn.className = "icon-btn edit-btn";
-    editBtn.textContent = "Edit";
-    editBtn.addEventListener("click", () => editTask(task.id));
+    editBtn.className = "action-btn edit-action";
+    editBtn.textContent = "✏️";
+    editBtn.title = "Edit";
+    editBtn.addEventListener("click", () => modifyItem(item.id));
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.className = "icon-btn delete-btn";
-    deleteBtn.textContent = "Delete";
-    deleteBtn.addEventListener("click", () => deleteTask(task.id));
+    deleteBtn.className = "action-btn delete-action";
+    deleteBtn.textContent = "🗑️";
+    deleteBtn.title = "Delete";
+    deleteBtn.addEventListener("click", () => removeItem(item.id));
 
-    actionsDiv.appendChild(editBtn);
-    actionsDiv.appendChild(deleteBtn);
+    actions.append(editBtn, deleteBtn);
 
-    li.appendChild(mainDiv);
-    li.appendChild(actionsDiv);
-    taskList.appendChild(li);
-  });
+    li.append(checkbox, title, info, actions);
+    return li;
 }
 
-// Toggle completed
-function toggleTaskCompleted(id) {
-  tasks = tasks.map((task) =>
-    task.id === id ? { ...task, completed: !task.completed } : task
-  );
-  saveTasksToStorage();
-  renderTasks();
+function toggleItem(id) {
+    plannerItems = plannerItems.map(item =>
+        item.id === id ? { ...item, done: !item.done } : item
+    );
+    savePlannerData();
+    refreshDisplay();
 }
 
-// Edit task
-function editTask(id) {
-  const task = tasks.find((t) => t.id === id);
-  if (!task) return;
+function modifyItem(id) {
+    const item = plannerItems.find(i => i.id === id);
+    if (!item) return;
 
-  const newText = prompt("Edit task:", task.text);
-  if (newText === null) return; // cancel
+    const newContent = prompt("Update your task:", item.content);
+    if (newContent === null || newContent.trim() === "") {
+        showNotification("Task update cancelled.", "info");
+        return;
+    }
 
-  const trimmed = newText.trim();
-  if (!trimmed) {
-    showMessage("Task cannot be empty.", "error");
-    return;
-  }
-
-  // ALSO check for duplicates during edit (excluding current task)
-  const duplicateTask = tasks.find(t => 
-    t.id !== id && t.text.toLowerCase() === trimmed.toLowerCase()
-  );
-  
-  if (duplicateTask) {
-    showMessage(`Task "${trimmed}" already exists!`, "error");
-    return;
-  }
-
-  task.text = trimmed;
-  saveTasksToStorage();
-  renderTasks();
-  showMessage("Task updated.", "success");
+    item.content = newContent.trim();
+    savePlannerData();
+    refreshDisplay();
+    showNotification("Task updated successfully!", "success");
 }
 
-// Delete task
-function deleteTask(id) {
-  const confirmDelete = confirm("Are you sure you want to delete this task?");
-  if (!confirmDelete) return;
-
-  tasks = tasks.filter((t) => t.id !== id);
-  saveTasksToStorage();
-  renderTasks();
-  showMessage("Task deleted.", "success");
+function removeItem(id) {
+    if (confirm("Remove this task permanently?")) {
+        plannerItems = plannerItems.filter(item => item.id !== id);
+        savePlannerData();
+        refreshDisplay();
+        showNotification("Task removed from planner.", "info");
+    }
 }

@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>To-Do List App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Planner Pro</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app-container">
-    <header class="app-header">
-      <h1>To-Do List</h1>
-      <p>Organize your daily tasks efficiently.</p>
-    </header>
+    <div class="planner-app">
+        <header class="app-top">
+            <h1>📋 Daily Planner</h1>
+            <p>Organize your day with smart planning</p>
+        </header>
 
-    <main>
-      <section class="task-input-section">
-        <form id="task-form">
-          <input
-            type="text"
-            id="task-input"
-            placeholder="Enter a new task..."
-            autocomplete="off"
-          />
-          <button type="submit" id="add-btn">Add</button>
+        <form id="planner-form" class="input-area">
+            <div class="input-row">
+                <input type="text" id="item-text" placeholder="What needs to be done today?" required>
+                <button id="add-item" type="submit">➕ Add</button>
+            </div>
+            <div class="options-row">
+                <select id="item-level">
+                    <option value="normal">Normal</option>
+                    <option value="urgent">Urgent</option>
+                    <option value="later">Later</option>
+                </select>
+                <select id="item-type">
+                    <option value="office">Office</option>
+                    <option value="home">Home</option>
+                    <option value="learning">Learning</option>
+                </select>
+                <input type="date" id="target-date">
+            </div>
         </form>
-        <p id="message" class="message"></p>
-      </section>
 
-      <section class="task-filter-section">
-        <div class="filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="active">Active</button>
-          <button class="filter-btn" data-filter="completed">Completed</button>
+        <div id="status-bar" class="status-bar"></div>
+
+        <div class="controls-area">
+            <button class="view-btn active" data-view="everything">All Items</button>
+            <button class="view-btn" data-view="pending">Pending</button>
+            <button class="view-btn" data-view="done">Done</button>
+            <button id="clear-done" class="clear-btn">🗑️ Clear Done</button>
         </div>
-      </section>
 
-      <section class="task-list-section">
-        <ul id="task-list" class="task-list"></ul>
-      </section>
-    </main>
-  </div>
+        <div class="list-container">
+            <ul id="items-area" class="items-list"></ul>
+        </div>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
