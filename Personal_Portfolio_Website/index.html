@@ -2,193 +2,239 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personal Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
 </head>
 
 <body>
-  <!-- Header / Navbar -->
-  <header class="header" id="header">
-    <nav class="navbar">
-      <div class="logo">Omkar Bhagwatwar</div>
-      <ul class="nav-links">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-        <li>
-          <a href="resume.pdf" class="nav-link resume-btn" target="_blank" rel="noopener noreferrer">
-            Resume
-          </a>
-        </li>
-      </ul>
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- Home Section -->
-    <section id="home" class="section home-section">
-      <div class="home-content">
-        <div class="home-text">
-          <h1>Hello, I'm <span>Omkar</span></h1>
-          <h2>AWS CloudOps & Software Testing</h2>
-          <p>
-            I have successfully completed a Software Testing course where I worked on four real products, and I am
-            currently pursuing an AWS CloudOps Engineer program to build strong skills in cloud and DevOps.
-          </p>
-
-          <div class="home-buttons">
-            <a href="#projects" class="btn primary-btn">View Projects</a>
-            <a href="#contact" class="btn secondary-btn">Contact Me</a>
-          </div>
-        </div>
-        <div class="home-image">
-          <img src="images/profile.jpg" alt="Profile photo" />
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about-section">
-      <div class="section-title">
-        <h2>About Me</h2>
-      </div>
-      <div class="about-content">
-        <div class="about-text">
-          <h3>Who I Am</h3>
-          <p>
-            I am a tech enthusiast focused on building strong skills in software testing, AWS CloudOps, Linux, and
-            modern DevOps tools so that I can design reliable, scalable, and well‑tested systems.
-          </p>
-          <h3>Education</h3>
-          <ul>
-            <li>Bachelor of Arts (2022)</li>
-            <li>Software Testing course (Selenium, Core Java, TestNG, Postman, MySQL)</li>
-          </ul>
-          <h3>Skills</h3>
-          <ul>
-            <li>AWS, Linux, Shell Scripting</li>
-            <li>HTML, CSS, JavaScript</li>
-            <li>Git, GitHub</li>
-          </ul>
-          <h3>Hobbies</h3>
-          <p>
-            I enjoy playing chess, travelling to new places, watching movies, reading books, and learning new languages.
-          </p>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section projects-section">
-      <div class="section-title">
-        <h2>Projects</h2>
-        <p>I have worked on frontend development projects that helped me apply my skills in real-world scenarios.</p>
-      </div>
-      <div class="projects-grid">
-        <!-- Project Card 1 -->
-        <article class="project-card">
-          <div class="project-content">
-            <h3>Software Testing Project 1</h3>
-            <p>
-              Manual and functional testing of a web-based application, including test case design, execution, bug
-              reporting, and basic regression testing.
-            </p>
-            <span class="project-tags">Manual Testing · Web App</span>
-          </div>
-        </article>
-
-        <!-- Project Card 2 -->
-        <article class="project-card">
-          <div class="project-content">
-            <h3>Software Testing Project 2</h3>
-            <p>
-              Designed and executed test scenarios for a mobile or web product, focusing on user flows, usability
-              checks, and bug tracking with clear documentation.
-            </p>
-            <span class="project-tags">Test Cases · Bug Reports</span>
-          </div>
-        </article>
-
-        <!-- Project Card 3 -->
-        <article class="project-card">
-          <div class="project-content">
-            <h3>Software Testing Project 3</h3>
-            <p>
-              Worked on end‑to‑end testing activities such as requirement understanding, test planning, test execution,
-              and reporting for a real‑world product.
-            </p>
-            <span class="project-tags">End‑to‑End Testing</span>
-          </div>
-        </article>
-        <!-- Contact Section -->
-        <section id="contact" class="section contact-section">
-          <div class="section-title">
-            <h2>Contact</h2>
-            <p>Have a question or want to collaborate? Send a message.</p>
-          </div>
-          <div class="contact-content">
-            <form id="contactForm" class="contact-form" novalidate>
-              <div class="form-group">
-                <label for="name">Name*</label>
-                <input type="text" id="name" name="name" placeholder="Your full name" />
-                <small class="error-message" id="nameError"></small>
-              </div>
-              <div class="form-group">
-                <label for="email">Email*</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" />
-                <small class="error-message" id="emailError"></small>
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject*</label>
-                <input type="text" id="subject" name="subject" placeholder="Subject" />
-                <small class="error-message" id="subjectError"></small>
-              </div>
-              <div class="form-group">
-                <label for="message">Message*</label>
-                <textarea id="message" name="message" rows="5" placeholder="Write your message here"></textarea>
-                <small class="error-message" id="messageError"></small>
-              </div>
-              <button type="submit" class="btn primary-btn">Send Message</button>
-              <p class="form-success" id="formSuccess"></p>
-            </form>
-            <div class="contact-details">
-              <h3>Other ways to reach</h3>
-              <p>Email: your.email@example.com</p>
-              <p>Location: Your City, Country</p>
-              <p>LinkedIn: <a href="#" target="_blank" rel="noopener noreferrer">Your LinkedIn</a></p>
-              <p>GitHub: <a href="#" target="_blank" rel="noopener noreferrer">Your GitHub</a></p>
+    <!-- Header / Navbar -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="logo">Omkar Bhagwatwar</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <a href="resume.pdf" class="nav-link resume-btn" target="_blank" rel="noopener noreferrer">
+                        Resume
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-          </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section home-section">
+            <div class="home-content">
+                <div class="home-text">
+                    <h1>Hello, I'm <span>Omkar Bhagwatwar</span></h1>
+                    <h2>Front-End Developer</h2>
+                    <p>
+                        I am a passionate Front-End Developer with strong skills in HTML, CSS, and JavaScript.
+                        I enjoy creating responsive, user-friendly, and visually appealing web interfaces
+                        while continuously learning modern front-end tools and best practices.
+                    </p>
+
+                    <div class="home-buttons">
+                        <a href="#projects" class="btn primary-btn">View Projects</a>
+                        <a href="#contact" class="btn secondary-btn">Contact Me</a>
+                    </div>
+                </div>
+                <div class="home-image">
+                    <img src="images/profile.jpg" alt="Profile photo" />
+                </div>
+            </div>
         </section>
-  </main>
 
-  <!-- Simple Project Modal -->
-  <div class="modal" id="projectModal">
-    <div class="modal-content">
-      <span class="modal-close">&times;</span>
-      <h3 id="modalTitle">Project Title</h3>
-      <p id="modalDescription">Detailed project description will appear here.</p>
+        <!-- About Section -->
+        <section id="about" class="section about-section">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Who I Am</h3>
+                    <p>
+                        “I am a tech enthusiast focused on building strong skills in Front-End Development using HTML,
+                        CSS, JavaScript, and modern frameworks to create responsive, user-friendly, and high-performance
+                        web applications.”
+                    </p>
+                    <h3>Education</h3>
+                    <ul>
+                        <li>Bachelor of Arts (2022)</li>
+                        <li>Frontend Development course (HTML, CSS, JavaScript) </li>
+                    </ul>
+                    <h3>Skills</h3>
+                    <ul>
+                        <li>AWS, Linux, Shell Scripting</li>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>Git, GitHub</li>
+                    </ul>
+                    <h3>Hobbies</h3>
+                    <p>
+                        I enjoy playing chess, travelling to new places, watching movies, reading books, and learning
+                        new languages.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects-section">
+            <div class="section-title">
+                <h2>Projects</h2>
+                <p>I have worked on frontend development projects that helped me apply my skills in real-world
+                    scenarios.</p>
+            </div>
+            <div class="projects-grid">
+                <!-- Project Card 1 -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3>To Do List </h3>
+                        <p>
+                            Developed a To Do List application using HTML, CSS, and JavaScript, allowing users to add,
+                            edit, and delete tasks.
+                        </p>
+                        <span class="project-tags">JavaScript · Web App</span>
+                    </div>
+                </article>
+
+                <!-- Project Card 2 -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3>Image Slider</h3>
+                        <p>
+                            Developed an image slider component using HTML, CSS, and JavaScript, featuring smooth
+                            transitions and
+                            responsive design.
+                        </p>
+                        <span class="project-tags">JavaScript · Web App</span>
+                    </div>
+                </article>
+
+                <!-- Project Card 3 -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3>Basic Calculator</h3>
+                        <p>
+                            Developed a basic calculator application using HTML, CSS, and JavaScript, implementing core
+                            functionalities
+                            such as addition, subtraction, multiplication, and division.
+                        </p>
+                        <span class="project-tags">JavaScript · Web App</span>
+                    </div>
+                </article>
+
+                <!-- Project Card 4 -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3>Personal Portfolio Website</h3>
+                        <p>
+                            Developed a personal portfolio website using HTML, CSS, and JavaScript, showcasing my
+                            skills,
+                            projects, and experience.
+                        </p>
+                        <span class="project-tags">JavaScript · Web App</span>
+                    </div>
+                </article>
+
+                <!-- Project Card 5 -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3>Student Teacher Booking Appointment</h3>
+                        <p>
+                            Developed a Student Teacher Booking Appointment application using HTML, CSS, and JavaScript,
+                            allowing teachers to
+                            manage student information, grades, and attendance.
+                        </p>
+                        <span class="project-tags">JavaScript · Web App</span>
+                    </div>
+                </article>
+
+                <!-- Project Card 5 -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3>Catering Reservation and Ordering System</h3>
+                        <p>
+                            Developed a Catering Reservation and Ordering System using HTML, CSS, and JavaScript,
+                            allowing users to
+                            browse menus, place orders, and manage reservations.
+                        </p>
+                        <span class="project-tags">JavaScript · Web App</span>
+                    </div>
+                </article>
+
+                <!-- Contact Section -->
+                <section id="contact" class="section contact-section">
+                    <div class="section-title">
+                        <h2>Contact</h2>
+                        <p>Have a question or want to collaborate? Send a message.</p>
+                    </div>
+                    <div class="contact-content">
+                        <form id="contactForm" class="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="name">Name*</label>
+                                <input type="text" id="name" name="name" placeholder="Your full name" />
+                                <small class="error-message" id="nameError"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" />
+                                <small class="error-message" id="emailError"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject*</label>
+                                <input type="text" id="subject" name="subject" placeholder="Subject" />
+                                <small class="error-message" id="subjectError"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message*</label>
+                                <textarea id="message" name="message" rows="5"
+                                    placeholder="Write your message here"></textarea>
+                                <small class="error-message" id="messageError"></small>
+                            </div>
+                            <button type="submit" class="btn primary-btn">Send Message</button>
+                            <p class="form-success" id="formSuccess"></p>
+                        </form>
+                        <div class="contact-details">
+                            <h3>Other ways to reach</h3>
+                            <p>Email: your.email@example.com</p>
+                            <p>Location: Your City, Country</p>
+                            <p>LinkedIn: <a href="#" target="_blank" rel="noopener noreferrer">Your LinkedIn</a></p>
+                            <p>GitHub: <a href="#" target="_blank" rel="noopener noreferrer">Your GitHub</a></p>
+                        </div>
+                    </div>
+                </section>
+    </main>
+
+    <!-- Simple Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h3 id="modalTitle">Project Title</h3>
+            <p id="modalDescription">Detailed project description will appear here.</p>
+        </div>
     </div>
-  </div>
 
-  <footer class="footer">
-    <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
-  </footer>
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Your Name. All rights reserved.</p>
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
