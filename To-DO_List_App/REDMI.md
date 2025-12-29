@@ -33,6 +33,3 @@ Modern **Task Management Web App** built with vanilla **HTML5, CSS3 & JavaScript
 
 **v2.0** - Added status counters, clear completed, improved UX  
 **v1.0** - Basic task management  
-
----
-**Made with ❤️ for daily productivity**
