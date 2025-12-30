@@ -457,7 +457,11 @@ body {
   }
 
   .contact-content {
-    flex-direction: column;
+    /*flex-direction: column;*/
+    max-width: 500px;
+    margin: auto;
+    margin-top: 40px;
+    text-align: center;
   }
 }
 
