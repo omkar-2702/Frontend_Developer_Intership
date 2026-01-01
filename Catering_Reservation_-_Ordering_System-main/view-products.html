@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Products</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>Catering System</h2>
+    <ul>
+        <li><a href="view-products.html">Products</a></li>
+        <li>
+            <a href="cart.html">
+                Cart <span id="cartCount" class="cart-badge">0</span>
+            </a>
+        </li>
+        <li><a href="orders.html">My Orders</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+    </ul>
+</nav>
+
+<div class="filter-buttons">
+    <button class="active" onclick="filterProducts('all')">All</button>
+    <button onclick="filterProducts('veg')">Veg</button>
+    <button onclick="filterProducts('nonveg')">Non-Veg</button>
+    <button onclick="filterProducts('starter')">Starters</button>
+    <button onclick="filterProducts('dessert')">Desserts</button>
+</div>
+
+<div class="page-container">
+    <h1 class="page-title">Products</h1>
+
+    <div class="products-grid">
+
+        <div class="product-card" data-category="veg">
+            <h3>Veg Thali</h3>
+            <p class="price">₹200</p>
+            <button onclick="addToCart('Veg Thali',200)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <h3>Paneer Curry</h3>
+            <p class="price">₹250</p>
+            <button onclick="addToCart('Paneer Curry',250)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <h3>Paneer Butter Masala</h3>
+            <p class="price">₹250</p>
+            <button onclick="addToCart('Paneer Butter Masala', 250)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <h3>Dal Tadka</h3>
+            <p class="price">₹180</p>
+            <button onclick="addToCart('Dal Tadka', 180)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <h3>Jeera Rice</h3>
+            <p class="price">₹150</p>
+            <button onclick="addToCart('Jeera Rice', 150)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <h3>Butter Naan (2 pcs)</h3>
+            <p class="price">₹80</p>
+            <button onclick="addToCart('Butter Naan', 80)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <h3>Veg Biryani</h3>
+            <p class="price">₹220</p>
+            <button onclick="addToCart('Veg Biryani', 220)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <h3>Mixed Veg Curry</h3>
+            <p class="price">₹210</p>
+            <button onclick="addToCart('Mixed Veg Curry', 210)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <h3>Palak Paneer</h3>
+            <p class="price">₹260</p>
+            <button onclick="addToCart('Palak Paneer',260)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="veg">
+            <h3>Veg Pulao</h3>
+            <p class="price">₹180</p>
+            <button onclick="addToCart('Veg Pulao',180)">Add to Cart</button>
+        </div>
+
+        <!-- NON VEG -->
+        <div class="product-card" data-category="nonveg">
+            <h3>Chicken Biryani</h3>
+            <p class="price">₹320</p>
+            <button onclick="addToCart('Chicken Biryani',320)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="nonveg">
+            <h3>Chicken Curry</h3>
+            <p class="price">₹280</p>
+            <button onclick="addToCart('Chicken Curry', 280)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="nonveg">
+            <h3>Butter Chicken</h3>
+            <p class="price">₹350</p>
+            <button onclick="addToCart('Butter Chicken', 350)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="nonveg">
+            <h3>Fish Fry</h3>
+            <p class="price">₹300</p>
+            <button onclick="addToCart('Fish Fry', 300)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="nonveg">
+            <h3>Chicken Tandoori (Half)</h3>
+            <p class="price">₹260</p>
+            <button onclick="addToCart('Chicken Tandoori', 260)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="nonveg">
+            <h3>Egg Masala</h3>
+            <p class="price">₹220</p>
+            <button onclick="addToCart('Egg Masala',220)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="nonveg">
+            <h3>Mutton Curry</h3>
+            <p class="price">₹420</p>
+            <button onclick="addToCart('Mutton Curry',420)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="nonveg">
+            <h3>Chicken Tikka Masala</h3>
+            <p class="price">₹360</p>
+            <button onclick="addToCart('Chicken Tikka Masala',360)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="nonveg">
+            <h3>Chicken Kebab</h3>
+            <p class="price">₹300</p>
+            <button onclick="addToCart('Chicken Kebab',300)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="nonveg">
+            <h3>Mutton Biryani</h3>
+            <p class="price">₹420</p>
+            <button onclick="addToCart('Mutton Biryani',420)">Add to Cart</button>
+        </div>
+
+
+        <!-- STARTER -->
+        <div class="product-card" data-category="starter">
+            <h3>Paneer Chilli</h3>
+            <p class="price">₹220</p>
+            <button onclick="addToCart('Paneer Chilli',220)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="starter">
+            <h3>Veg Manchurian</h3>
+            <p class="price">₹180</p>
+            <button onclick="addToCart('Veg Manchurian', 180)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="starter">
+            <h3>Chicken 65</h3>
+            <p class="price">₹240</p>
+            <button onclick="addToCart('Chicken 65', 240)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="starter">
+            <h3>Spring Rolls</h3>
+            <p class="price">₹160</p>
+            <button onclick="addToCart('Spring Rolls', 160)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="starter">
+            <h3>Hara Bhara Kebab</h3>
+            <p class="price">₹210</p>
+            <button onclick="addToCart('Hara Bhara Kebab',210)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="starter">
+            <h3>French Fries</h3>
+            <p class="price">₹160</p>
+            <button onclick="addToCart('French Fries',160)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="starter">
+            <h3>Chicken Lollipop</h3>
+            <p class="price">₹290</p>
+            <button onclick="addToCart('Chicken Lollipop',290)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="starter">
+            <h3>Cheese Balls</h3>
+            <p class="price">₹180</p>
+            <button onclick="addToCart('Cheese Balls',180)">Add to Cart</button>
+        </div>
+
+
+        <!-- DESSERT -->
+        <div class="product-card" data-category="dessert">
+            <h3>Gulab Jamun (2 pcs)</h3>
+            <p class="price">₹90</p>
+            <button onclick="addToCart('Gulab Jamun', 90)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="dessert">
+            <h3>Ice Cream (Vanilla)</h3>
+            <p class="price">₹80</p>
+            <button onclick="addToCart('Ice Cream', 80)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="dessert">
+            <h3>Rasgulla (2 pcs)</h3>
+            <p class="price">₹100</p>
+            <button onclick="addToCart('Rasgulla', 100)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="dessert">
+            <h3>Chocolate Brownie</h3>
+            <p class="price">₹150</p>
+            <button onclick="addToCart('Chocolate Brownie', 150)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="dessert">
+            <h3> Hot Chocolate </h3>
+            <p class="price">₹180</p>
+            <button onclick="addToCart('Hot Chocolate', 1880)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="dessert">
+            <h3>Chocolate Cake</h3>
+            <p class="price">₹220</p>
+            <button onclick="addToCart('Chocolate Cake',220)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="dessert">
+            <h3>Fruit Custard</h3>
+            <p class="price">₹140</p>
+            <button onclick="addToCart('Fruit Custard',140)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="dessert">
+            <h3>Shahi Tukda</h3>
+            <p class="price">₹160</p>
+            <button onclick="addToCart('Shahi Tukda',160)">Add to Cart</button>
+        </div>
+
+        <div class="product-card" data-category="dessert">
+            <h3>Kulfi</h3>
+            <p class="price">₹110</p>
+            <button onclick="addToCart('Kulfi',110)">Add to Cart</button>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existing = cart.find(item => item.name === name);
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({
+            id: Date.now(),
+            name,
+            price,
+            quantity: 1
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Added to cart!");
+}
+
+function filterProducts(category) {
+    const products = document.querySelectorAll(".product-card");
+    const buttons = document.querySelectorAll(".filter-buttons button");
+
+    // Active button style
+    buttons.forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+
+    products.forEach(product => {
+        if (category === "all" || product.dataset.category === category) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

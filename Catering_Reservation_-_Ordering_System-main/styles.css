@@ -1,0 +1,594 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------- BODY ---------- */
+body {
+    background-color: #f4f6f8;
+    min-height: 100vh;
+}
+
+/* ---------- NAVBAR ---------- */
+nav {
+    background-color: #2c3e50;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center;   
+    align-items: center;       
+}
+
+nav h4 {
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+    background-color: #2c3e50;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h2 {
+    color: white;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cart-badge {
+    background: red;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+
+/* ---------- MAIN LAYOUT ---------- */
+.main-layout {
+    display: flex;
+    min-height: calc(100vh - 120px);
+}
+
+/* ---------- LEFT PANEL (LOGIN / REGISTER) ---------- */
+.left-panel {
+    width: 40%;
+    background: linear-gradient(120deg, #2980b9, #6dd5fa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Login Card */
+.auth-container {
+    background: #fff;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: 30px;
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Role Buttons */
+.role-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.role-buttons button {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #ecf0f1;
+}
+
+.role-buttons button.active {
+    background-color: #2980b9;
+    color: #fff;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.toggle {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.toggle span {
+    color: #2980b9;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ---------- RIGHT PANEL (ABOUT + CONTACT) ---------- */
+.right-panel {
+    width: 60%;
+    background-color: #ffffff;
+    padding: 60px;
+}
+
+/* Info Sections */
+.info-section {
+    margin-bottom: 40px;
+}
+
+.info-section h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    padding: 15px;
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+}
+
+
+/* ---------- VIEW PRODUCT PAGE ---------- */
+.page-container {
+    padding: 40px 60px;
+    background-color: #f4f6f8;
+    min-height: calc(100vh - 70px);
+}
+
+.page-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+/* ---------- PRODUCTS GRID ---------- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* ---------- PRODUCT CARD ---------- */
+.product-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.product-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.product-card .price {
+    font-size: 18px;
+    color: #27ae60;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.product-card button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.product-card button:hover {
+    background-color: #1f6391;
+}
+
+
+/* ---------- CART PAGE ---------- */
+.cart-page {
+    padding: 40px 60px;
+    background-color: #f4f6f8;
+    min-height: calc(100vh - 70px);
+}
+
+.cart-page h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+/* ---------- CART ITEM CARD ---------- */
+.cart-item {
+    background-color: #ffffff;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item h4 {
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.cart-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* ---------- QUANTITY CONTROLS ---------- */
+.qty-controls {
+    display: flex;
+    align-items: center;
+}
+
+.qty-controls button {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #2980b9;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.qty-controls span {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.qty-controls button:hover {
+    background-color: #1f6391;
+}
+
+/* ---------- REMOVE BUTTON ---------- */
+.remove-btn {
+    background-color: #e74c3c;
+    border: none;
+    padding: 6px 12px;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+/* ---------- TOTAL & PLACE ORDER ---------- */
+.cart-summary {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.cart-summary h3 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.place-order-btn {
+    background-color: #27ae60;
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.place-order-btn:hover {
+    background-color: #219150;
+}
+
+/* ---------- CATEGORY FILTER ---------- */
+.filter-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.filter-buttons button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #ecf0f1;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.filter-buttons button:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.filter-buttons button.active {
+    background-color: #2c3e50;
+    color: white;
+}
+
+
+
+/* ------- ORDER PAGE -------- */
+
+h2 {
+    margin: 30px;
+    color: #2c3e50;
+    font-size: 28px;
+}
+
+#ordersContainer {
+    max-width: 1000px;
+    margin: 20px auto 60px;
+    padding: 0 20px;
+}
+
+/* Individual order card */
+.order-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Order ID */
+.order-card h3 {
+    margin-bottom: 8px;
+    color: #2980b9;
+    font-size: 20px;
+}
+
+/* Order date */
+.order-card p {
+    color: #7f8c8d;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Order items */
+.order-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+.order-card ul li {
+    padding: 6px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Order total */
+.order-card strong {
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    color: #27ae60;
+}
+
+/* Empty message */
+#ordersContainer p {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    margin-top: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h2 {
+        margin: 20px;
+        font-size: 24px;
+    }
+
+    .order-card {
+        padding: 20px;
+    }
+
+    .order-card h3 {
+        font-size: 18px;
+    }
+}
+
+/* ---------- ORDER STATUS ---------- */
+
+.order-status {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.order-status.pending {
+    color: orange;
+}
+
+.order-status.delivered {
+    color: green;
+}
+
+
+/* ---------- PROFILE PAGE ---------- */
+
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+.profile-field {
+    margin-bottom: 15px;
+}
+
+.profile-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.profile-field input,
+.profile-field textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.profile-field textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.save-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.save-btn:hover {
+    background-color: #219150;
+}
+
+/* ---------- USER DASHBOARD PAGE ---------- */
+
+.dashboard {
+    padding: 30px;
+}
+
+.dashboard h1 {
+    margin-bottom: 25px;
+    color: #2c3e50;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.dash-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dash-card:hover {
+    transform: translateY(-5px);
+    background: #f5faff;
+}
+
+.dash-card h3 {
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.logout-btn {
+    background: crimson;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
