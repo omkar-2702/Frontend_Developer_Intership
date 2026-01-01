@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h2>User Dashboard</h2>
+    <ul>
+        <li><a href="view-products.html">Products</a></li>
+        <li>
+            <a href="cart.html">
+                Cart <span id="cartCount" class="cart-badge">0</span>
+            </a>
+        </li>
+        <li><a href="orders.html">My Orders</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><button onclick="logout()" class="logout-btn">Logout</button></li>
+    </ul>
+</nav>
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+    <h1 id="welcomeText">Welcome 👋</h1>
+
+    <div class="dashboard-cards">
+
+        <div class="dash-card" onclick="location.href='view-products.html'">
+            <h3>🍽 View Products</h3>
+            <p>Browse available food items</p>
+        </div>
+
+        <div class="dash-card" onclick="location.href='cart.html'">
+            <h3>🛒 My Cart</h3>
+            <p>View & manage cart items</p>
+        </div>
+
+        <div class="dash-card" onclick="location.href='orders.html'">
+            <h3>📦 My Orders</h3>
+            <p>Track your order history</p>
+        </div>
+
+        <div class="dash-card" onclick="location.href='profile.html'">
+            <h3>👤 My Profile</h3>
+            <p>View & edit profile</p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+/* 🔐 Check Login */
+let loggedInUser = localStorage.getItem("loggedInUser");
+if (!loggedInUser) {
+    alert("Please login first");
+    window.location.href = "login.html";
+}
+
+/* 👋 Welcome Message */
+document.getElementById("welcomeText").innerText =
+    `Welcome, ${loggedInUser.split("@")[0]} 👋`;
+
+/* 🛒 Cart Count */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+document.getElementById("cartCount").innerText = cart.length;
+
+/* 🚪 Logout */
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    alert("Logged out successfully");
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

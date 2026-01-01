@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>Catering System</h2>
+    <ul>
+        <li><a href="view-products.html">Products</a></li>
+        <li>
+            <a href="cart.html">
+                Cart <span id="cartCount" class="cart-badge">0</span>
+            </a>
+        </li>
+        <li><a href="orders.html">My Orders</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+    </ul>
+</nav>
+
+<h2>My Orders</h2>
+
+<div id="ordersContainer"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const container = document.getElementById("ordersContainer");
+
+    // 🔥 Force fresh read
+    const ordersRaw = localStorage.getItem("orders");
+    const orders = ordersRaw ? JSON.parse(ordersRaw) : [];
+
+    if (orders.length === 0) {
+        container.innerHTML = "<p>No orders found</p>";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    orders.reverse().forEach(order => {
+        let itemsHTML = order.items.map(item =>
+            `<li>${item.name} × ${item.quantity} = ₹${item.price * item.quantity}</li>`
+        ).join("");
+
+        container.innerHTML += `
+            <div class="order-card">
+                <h3>Order ID: ${order.orderId}</h3>
+                <p>Date: ${order.date}</p>
+                <ul>${itemsHTML}</ul>
+                <strong>Total: ₹${order.total}</strong>
+            </div>
+        `;
+    });
+});
+
+// Cart badge
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById("cartCount").innerText = count;
+}
+updateCartCount();
+</script>
+
+
+
+</body>
+</html>
